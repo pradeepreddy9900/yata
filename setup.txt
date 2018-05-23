@@ -1,0 +1,19 @@
+make sure you have latest npm installed i.e. version > 8.x.x
+
+npm install -g @angular/cli    //installing angular client setup globally
+
+ng new angular-tour-of-heroes   //starts new project with default application and supporting files
+
+cd angular-tour-of-heroes     // change directory to new project.
+
+ng serve --open                // starts project by deploying at localhost at 4200 port
+
+ng generate component componentName   //creates a new component with importing this module into root module and also component class and respective html and css files. 
+
+ng generate service hero          // creates a new service and defaultly sets it to provider at root level.
+
+ng generate service hero --module=app    // you can register providers at different levels: in the HeroesComponent, in the AppComponent, in the AppModule. 
+
+ng generate module app-routing --flat --module=app // --flat puts the file in src/app instead of its own folder. // --module=app tells the CLI to register it in the imports array of the AppModule.
+
+npm install angular-in-memory-web-api --save  // in memory web api package. 
