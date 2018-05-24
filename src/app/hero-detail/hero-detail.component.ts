@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HeroService } from '../hero.service';
@@ -11,6 +11,8 @@ import { Hero } from '../hero';
 })
 export class HeroDetailComponent implements OnInit {
     @Input() hero: Hero;
+  //  @Output() deleteRequest = new EventEmitter<Hero>();
+    
     constructor(
         private route: ActivatedRoute,
         private location: Location,
@@ -29,6 +31,11 @@ export class HeroDetailComponent implements OnInit {
             this.heroService.updateHero(this.hero)
             .subscribe(() => this.goBack());
         }
+    
+    /**deleteHero(): void {
+        this.deleteRequest.emit(this.hero);
+    }*/
+    
     ngOnInit() {
         this.getHero();
     }

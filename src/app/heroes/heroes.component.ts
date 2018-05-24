@@ -9,7 +9,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
     heroes: Hero[];
-    //selectedHero: Hero;
+    selectedHero: Hero;
     constructor(private heroService: HeroService) { }
     getHeroes = function(){
         this.heroService.getHeroes()
@@ -32,9 +32,13 @@ export class HeroesComponent implements OnInit {
     ngOnInit() {
         this.getHeroes();
     };
-    /**
-    select = function(hero) {
+    
+    /**select = function(hero) {
         this.selectedHero = hero;
+    }
+    
+    deleteHero(hero: Hero): void {
+        console.log(`coming here: i.e. delete hero ${hero.name}`);            
     }*/
   
 
