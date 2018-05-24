@@ -5,14 +5,21 @@
 	<!-- (click) passes input value to add() and then clears the input -->
 	<button (click)="add(heroName.value); heroName.value=''">add</button>
 </div>
-<ul class="heroes">
-	<!-- <li *ngFor="let hero of heroes" (click)="select(hero)" [class.selected]="selectedHero === hero"> -->
-	<li *ngFor="let hero of heroes"><a
-		routerLink="/detail/{{hero.id}}"> <span class="badge">{{hero.id}}</span>
+<!-- <ul class="heroes">
+	<li *ngFor="let hero of heroes" (click)="select(hero)" [class.selected]="selectedHero === hero">
+	<li ><a
+		> <span class="badge">{{hero.id}}</span>
 			{{hero.name}}
 	</a>
-		<button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+		
 	</li>
-</ul>
+</ul> -->
+
+<div class="list-group col-2">
+  <li *ngFor="let hero of heroes" class="list-group-item list-group-item-action">
+  	<span routerLink="/detail/{{hero.id}}">{{hero.id}} {{hero.name}}</span>
+  <button style="float:right;" type="button" class="btn btn-danger" title="delete hero" (click)="delete(hero)">x</button>
+  </li>
+</div>
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
 
