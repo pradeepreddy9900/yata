@@ -1,6 +1,11 @@
-<h3>Top Heroes</h3>
+<h3 [appHighlight]="color" [defaultColor]="'violet'">Top Heroes</h3>
+<div>
+  <input type="radio" name="colors" (click)="color='lightgreen'">Green
+  <input type="radio" name="colors" (click)="color='yellow'">Yellow
+  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
 <app-hero-search></app-hero-search>
-<div class="grid grid-pad">
+<div class="grid grid-pad" style="width: 60%;">
   <a *ngFor="let hero of heroes" class="col-1-4"
       routerLink="/detail/{{hero.id}}">
     <div class="module hero">

@@ -17,3 +17,7 @@ ng generate service hero --module=app    // you can register providers at differ
 ng generate module app-routing --flat --module=app // --flat puts the file in src/app instead of its own folder. // --module=app tells the CLI to register it in the imports array of the AppModule.
 
 npm install angular-in-memory-web-api --save  // in memory web api package. 
+
+ng generate component hero-app --inline-style  //The CLI defines an empty styles array when you create the component with the --inline-styles flag
+
+ng add @angular/elements --name=*your_project_name* // Use the Angular CLI to automatically set up your project with the correct polyfill:
