@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './power-boost-calculator.component.html',
   styleUrls: ['./power-boost-calculator.component.css']
 })
-export class PowerBoostCalculatorComponent implements OnInit {
+export class PowerBoostCalculatorComponent {
 
   power = 5;
   factor = 1;

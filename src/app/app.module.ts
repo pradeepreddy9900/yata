@@ -19,6 +19,8 @@ import { HeroJobAdComponent } from './hero-job-ad.component';
 import { HighlightDirective } from './highlight.directive';
 import { ExponentialStrengthPipe } from './exponential-strength.pipe';
 import { PowerBoostCalculatorComponent } from './power-boost-calculator/power-boost-calculator.component';
+import { FlyingHeroesComponentComponent } from './flying-heroes-component/flying-heroes-component.component';
+import { FlyingHeroesPipe } from './flying-heroes-component/flying-heroes.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { PowerBoostCalculatorComponent } from './power-boost-calculator/power-bo
     HeroProfileComponent,
     HighlightDirective,
     ExponentialStrengthPipe,
-    PowerBoostCalculatorComponent
+    PowerBoostCalculatorComponent,
+    FlyingHeroesComponentComponent,
+    FlyingHeroesPipe
   ],
   entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
   imports: [

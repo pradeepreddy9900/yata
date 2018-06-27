@@ -1,0 +1,20 @@
+<h2>{{title}}</h2>
+<label>New Hero</label>
+<input type="text" #box (keyup.enter)="addHero(box.value);box.value=''">
+<input type="checkbox" [(ngModel)]="canFly">Can Fly
+<input type="checkbox" [(ngModel)]="mutate">Mutate <br/>
+<button (click)="reset()">Reset</button>
+<br/>
+<h4>Heroes who fly (piped)</h4>
+<div id="flyers">
+  <div *ngFor="let hero of (heroes | flyingHeroes)">
+    {{hero.name}}
+  </div>
+</div>
+
+<h4>All Heroes (no pipe)</h4>
+<div id="all">
+  <div *ngFor="let hero of heroes">
+    {{hero.name}}
+  </div>
+</div>
