@@ -1,0 +1,122 @@
+<ion-view>
+  <ion-nav-bar class="bar nav-title-slide-ios7 bar-{{$root.LOB}} {{$root.LOB}}-border2 {{{true:'wrapperHeaderHeight'}[$root.isWrapper && $root.isIOS]}} {{{true:'wrapperHeaderHeight-wg'}[$root.isWrapper && $root.isIOS && $root.LOB == 'wg']}} {{{true:'wrapperHeaderHeight-cpic'}[$root.isWrapper && $root.isIOS && $root.LOB == 'cpic']}}">
+      <ion-nav-title>{{header}}</ion-nav-title>
+      <ion-nav-buttons side="right">
+          <input type="checkbox" class="offScreen" aria-hidden="true" autofocus>
+          <button ng-if="modetype == 'txn'" class="button button-icon button-clear ion-navicon" ng-class="{'button-clear-cpic': $root.LOB == 'cpic','button-clear-wg': $root.LOB == 'wg'}"
+              role="button" aria-label="main menu" ng-click="showRightMenu()" auto-focus>
+          </button>
+      </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content delegate-handle='content' id="container-selection" ng-class="{'has-header-cpic': $root.LOB == 'cpic','has-header-wg': $root.LOB == 'wg'}">
+      <div class="mainContent noPadding postSignOn-Content">
+          <form ng-submit="next()">
+              <div class="container-selectionContent">
+                      <user-messages ng-model='errorModel.messages' error-model='errorModel.model.$error' message-type='error'></user-messages>
+                  <!-- <div class="S14" ng-If="modetype != 'txn'">{{pageContent.text.pageHeader1}}</div>
+                  <div class="S14" ng-If="modetype == 'txn'">{{pageContent.text.pageHeader2}}</div> -->
+                  <div ng-if="modetype != 'txn'">
+                      <p class="S1">{{pageContent.text.cc1}}</p>
+                      <p class="S1">{{pageContent.text.cc2}}</p>
+                      <p class="S1" ng-if="skip == 1">{{pageContent.text.cc4}}</p>
+                      <p class="S1" ng-if="skip == 1">{{pageContent.text.cc5}}</p>
+                      <p class="S1">{{pageContent.text.cc3}}</p>
+                  </div>
+
+                  <div ng-if="modetype == 'txn'">
+                      <p class="S1">{{pageContent.text.cc6}}</p>
+                      <p class="S1">{{pageContent.text.cc7}}</p>
+                      <p class="S17">{{pageContent.text.cc8}}</p>
+                  </div>
+
+
+                  <!-- <p class="S1" ng-bind-html="pageContent.text.pageInstructions3"></p> -->
+                  <div class="label">
+                      <span class="S1">{{pageContent.text.mPhone}}</span>
+                      <div>
+                          <user-messages ng-model='formValidationMessages.MOBILE_PHONE' error-model='pageState.MOBILE_PHONE.$error'
+                              message-type='error'></user-messages>
+                          <input type="tel" id="MOBILE_PHONE" class="field" ng-model="pageState.MOBILE_PHONE.value"
+                              maxlength="14" ng-change="pageState.MOBILE_PHONE.value = toViewFormat(pageState.MOBILE_PHONE.value)">
+                      </div>
+                  </div>
+                  <div class="label">
+                      <span class="S1">{{pageContent.text.hPhone}}</span>
+                      <div>
+                          <user-messages ng-model='formValidationMessages.HOME_PHONE' error-model='pageState.HOME_PHONE.$error'
+                              message-type='error'></user-messages>
+                          <input type="tel" id="HOME_PHONE" class="field" ng-model="pageState.HOME_PHONE.value" maxlength="14"
+                              ng-change="pageState.HOME_PHONE.value = toViewFormat(pageState.HOME_PHONE.value)">
+                      </div>
+                  </div>
+                  <div class="label">
+                      <span class="S1">{{pageContent.text.bPhone}}</span>
+                      <div>
+                          <user-messages ng-model='formValidationMessages.BUSINESS_PHONE' error-model='pageState.BUSINESS_PHONE.$error'
+                              message-type='error'></user-messages>
+                          <input type="tel" id="BUSINESS_PHONE" class="field" ng-model="pageState.BUSINESS_PHONE.value"
+                              maxlength="14" ng-change="pageState.BUSINESS_PHONE.value = toViewFormat(pageState.BUSINESS_PHONE.value)">
+                      </div>
+                      <div class="emailMsg S22">{{pageContent.text.instruct1}}</div>
+                  </div>
+                  <div class="label">
+                      <span class="S1">{{pageContent.text.email}}</span>
+                      <a ng-click="openEmailInfo()" class="icon-bp-info"></a>
+                      <div>
+                          <user-messages ng-model='formValidationMessages.EMAIL' error-model='pageState.EMAIL.$error'
+                              message-type='error'></user-messages>
+                          <!-- <input type="email" id="email" class="field" ng-model="pageState.email" placeholder="email"> -->
+                          <input id="email" type="text" ng-model="pageState.EMAIL.value" ng-change="validateEmail(pageState.EMAIL.value)"
+                              class="labeledField" id="EMAIL" autocomplete="email" maxlength="40">
+                          <!-- ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{1,}$/"> -->
+                      </div>
+                      <div class="emailMsg S22">{{pageContent.text.instruct2}}</div>
+                  </div>
+                  <div class="S1">{{pageContent.text.instruct3}}</div>
+                  <div class='field'>
+                      <div class="radio-group full">
+                          <input type="radio" value="Y" id="yes" name='alwaysOtvc' ng-model='pageState.alwaysOtvc'>
+                          <label for="yes" class="button small silver otvc-label">{{pageContent.text.yes}}</label>
+                          <input type="radio" value="N" id="no" name='alwaysOtvc' ng-model='pageState.alwaysOtvc'>
+                          <label for="no" class="button small silver otvc-label">{{pageContent.text.no}}</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="container-selectionButtons">
+                  <div class="row" ng-if="modetype != 'txn'">
+                      <div class="col col-50">
+                          <button id='cancelButton' class="button silver medium accessibilityText" ng-click="skipotvc()"
+                              type="button" manual-focus ng-if="skip == 0">
+                              <span>{{pageContent.text.sLaterButton}}</span>
+                          </button>
+                          <button id='cancelButton' class="button silver medium accessibilityText" ng-click="cancel()"
+                              type="button" manual-focus ng-if="skip != 0">
+                              <span>{{pageContent.text.signoff}}</span>
+                          </button>
+                      </div>
+                      <div class="col col-50">
+                          <button type="submit" id='submitButton' class="button blue medium" 
+                           ng-disabled="!( isSubmit && (pageState.MOBILE_PHONE.value || pageState.HOME_PHONE.value || pageState.BUSINESS_PHONE.value) )">
+                              {{pageContent.text.cwsbutton}}
+                          </button>
+                      </div>
+                  </div>
+                      <div class="col">
+                          <button type="submit" id='submitButton' class="button blue medium"
+                          ng-disabled="!isSubmit">
+                              {{pageContent.text.nextButton}}
+                          </button>
+                      </div>
+                  </div>
+                  <div class="disclaimer-footer" aria-describedby="cibcfooter" role="application" tabindex="0"
+                      ng-click="openAgreement()">
+                      <div class="S22" id="cibcfooter" style="display:inline" aria-label="{{pageContent.text['dandd'+ $root.platform]}} {{pageContent.text.eaaTxt}} {{pageContent.text.eaaalt}}"
+                          role="link">{{pageContent.text['dandd'+ $root.platform]}}
+                          <span style='color:#AF0B1C'>Disclaimers and Disclosures</span>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </ion-content>
+</ion-view>
