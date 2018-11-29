@@ -78,8 +78,16 @@ export class OtvcPage extends BasePage {
   public isIos: boolean;
 
   setPageState(data) {
-    this.lang = this.rootService.getLang();
-    this.lob = this.rootService.getLOB();
+    // this.pageContent = data.PageContentResp.Contents;
+    //     this.isDataAvailable = true;
+    //     this.headerObj.headerContent = this.pageContent.text.header;
+    //     this.isWrapper = RootService.getWrapperObj("isWrapperApp");
+    //     this.footerObj.content = this.pageContent;
+
+    //     this.hasUnexpectedException = this.navParams.get('unexpectedException');
+    //     if (this.hasUnexpectedException) {
+    //         this.unexpectedException = this.pageContent.error.unexpectedException;
+    //     }
 
     this.initialize();
   }
