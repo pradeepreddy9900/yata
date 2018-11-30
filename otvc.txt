@@ -1,0 +1,54 @@
+<site-header *ngIf="isDataAvailable" [headerObj]='headerObj'></site-header>
+<ion-content padding class='container-preSignOn' *ngIf="isDataAvailable" [ngClass]="isDataAvailable ? 'has-header-' + lob : ''">
+        <section *ngIf="isDataAvailable" class="mainContent preSignOn-Content">
+    <user-message [usermessage]='unexpectedException' [messageType]="'error'"></user-message>
+    <!-- <accessibility-message [accessibilityMessage]='formError'></accessibility-message> -->
+           
+        <p class="s1">{{pageContent.text.pgInstructions1}}
+            <span class ="s4">
+                <a class = "underlinelink sameWindow newWindow" (click)= "learnmore()" role ="link">Learn more about one time verification codes</a>
+            </span>
+        </p>
+        <p class="s1">{{pageContent.text.pgInstructions2}}</p>
+        <p class="s1">{{pageContent.text.pgInstructions3}}</p>
+
+
+        <h3>{{pageContent.text.ycMethod}}</h3>
+         <!-- <section tabindex= '0' class="item-select field"> 
+                <span class="col col-67 watchListSelector">
+                        <select [(ngModel)]="selectedList" class= "S1" >
+                            <option [selected]='selectedList === -1'[ngValue]="-1" class= "S32">{{pageContent.text.co}}</option>
+                            <option *ngFor="let selectedList of selectedlists  let i = index" [ngValue]="i"></option>
+                        </select>
+                    </span> -->
+            <!--  <select>
+                <optionclass="S32">Choose One</option>
+
+                  <option *ngFor="let mode of otvcDetail.Contact; let index = index;" [value]="mode.type" class="">
+                              {{mode.type}}:&nbsp;{{mode.value}}
+                          </option> 
+            </select> -->
+        <!-- </section>  -->
+        <!-- <li class="row">
+                <span class="col col-67 watchListSelector">
+                    <select [(ngModel)]="select" >
+                        <option [value]="0">{{pageContent.text.co}}</option> -->
+                        <!-- <option *ngFor="let listVal of watchLists let i = index" [value]="i + 1">{{listVal.Name}}</option> -->
+                    <!-- </select>
+                </span>
+
+            </li> -->
+                    <section class='S14 item-select field'>
+                            <select class='S1' [(ngModel)]="select"  tabindex="0" >
+                              <option  [ngValue]='""' class='S32'>{{pageContent.text.co}}</option>
+                              <option  [ngValue]='"BUYTOOPEN"' class='S32'>{{pageContent.text.co}}</option>
+                              <option  [ngValue]='"BUYTOCLOSE"' class='S32'>{{pageContent.text.btClose}}</option>
+                              <option  [ngValue]='"SELLTOOPEN"' class='S32'>{{pageContent.text.stOpen}}</option>
+                              <option  [ngValue]='"SELLTOCLOSE"' class='S32'>{{pageContent.text.stClose}}</option>
+                            </select>
+                        </section> 
+                        
+        
+            <button type="submit" class="button blue medium" role="button">{{pageContent.text.sCodeButton}}</button>
+        </section>
+</ion-content>
