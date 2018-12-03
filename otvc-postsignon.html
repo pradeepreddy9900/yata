@@ -1,0 +1,17 @@
+<site-header *ngIf="isDataAvailable" [headerObj]='headerObj'></site-header>
+<ion-content class='container-preSignOn' *ngIf="isDataAvailable" [ngClass]="isDataAvailable ? 'has-header-' + lob : ''">
+    <app-error></app-error>
+    <user-message [usermessage]='unexpectedException' [messageType]="'error'"></user-message>
+    <accessibility-message [accessibilityMessage]='formError'></accessibility-message>
+    <ul>
+        <li class="row">{{pageContents.text.cc6}}</li>
+        <li class="row">{{pageContents.text.cc7}}</li>
+        <li class="row">{{pageContents.text.cc8}}</li>
+        <li class="row">{{pageContents.text.instruct3}}</li>
+        
+        <li class='row'>
+            <button ion-button type="submit" class='button blue medium'>{{pageContent.text.sCodeButton}}</button>
+        </li>
+    </ul>
+    <site-footer [footerObj]="footerObj" [isWrapper]="isWrapper"></site-footer>
+</ion-content>
